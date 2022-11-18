@@ -1,0 +1,31 @@
+<h2>{{title}}</h2>
+<table class="table" >
+    <tr>
+      <th class="table-secondary">index</th>
+      <th>Even or Odd </th>
+      <th>Raiting</th>
+      <th>Room Number</th>
+      <th>Room Type</th>
+      <th>Room Price</th>
+      <th>Room Amenetis</th>
+      <th>Cheakin Time </th>
+      <th>send data </th>
+      <th>delet room </th>
+    </tr>
+    <!-- ng class will give even class if row is even and odd when row is odd  -->
+    <!-- *ngFor will loop holle data  , even refer to even add and index are same -->
+    <tr [ngClass]=" e? 'even': 'odd'  " *ngFor="let room of rooms; let e=even;let o =odd; let i=index   ">
+      <td>{{i+1}} </td>
+      <td>{{ e ?'Even': 'Odd'  }}</td>
+      <td> {{room.raiting | number :'1.2' }}</td>
+      <td>{{room.id }} </td>
+      <td>{{room.roomType }} </td>
+      <!-- currency pip will format data to currency data with dolar sine without impacting orignla data -->
+      <td>{{room.price | currency  }} </td>
+      <td>{{room.amenetis  | titlecase }} </td>
+      <td>{{room.chekeinTime | date }} </td>
+       <!-- select room function will return curent  room data to componnet  -->
+      <td> <button class="btn btn-outline-light" (click)="selectRoom(room)" >send</button> </td>
+      <td> <button class="btn primary-btn" (click)=" deletroom(room)  " >delet</button> </td>
+    </tr>
+  </table>
